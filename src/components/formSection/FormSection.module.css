@@ -7,6 +7,16 @@
 	padding: 2rem;
 }
 
+.copyIcon {
+	fill: var(--color-secondary);
+	font-size: 1.3rem;
+	transition: font-size 50ms ease;
+}
+
+.copyIcon:hover {
+	font-size: 1.4rem;
+}
+
 form section {
 	padding: 1.5rem 1rem 1rem;
 	background: var(--color-quaternary);	
@@ -101,6 +111,13 @@ display: flex;
 .formMainSection button {
 	background: var(--color-secondary);
 	color: var(--color-tertiary);
-	padding: 0.8rem 1rem;
+	padding: 0.7rem 1rem;
+	border: 3px solid var(--color-secondary);
 	cursor: pointer;	
+}
+
+.formMainSection button:hover {
+	background: transparent;
+	border: 3px solid var(--color-secondary);	
+	color: var(--color-secondary);
 }

@@ -1,11 +1,14 @@
 import style from './StrengthIndicator.module.css';
+import type { Strength } from '../formSection/FormSection';
 
 type StrengthIndicatorProps = {
-  strength: number;
+  strength: Strength;
 };
 
-
+/** COMPONENT RENDERS STRENGTH-INDICATION CARD, TAKES IS LEVEL OF STRENGTH 0-4 */
 const StrenghtIndicator = ({strength}: StrengthIndicatorProps) => {
+
+  // FUNCTION TO RETURN RESPECTIVE INDICATOR STYLES
   const returnIndicatorStyles = (strength: number) => {
     if(strength === 0) {
       return {borderColor: "var(--color-strength-0)"}

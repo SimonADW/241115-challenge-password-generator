@@ -2,6 +2,14 @@ import StrenghtIndicator from '../strenghtIndicator/StrenghtIndicator';
 import style from './formSection.module.css';
 import { FaRegCopy } from "react-icons/fa";
 
+export enum Strength {
+	Default = 0,
+	Weak = 1,
+	Medium = 2,
+	Strong = 3,
+	VeryStrong = 4,
+  }
+
 const formSection = () => {
 
   return (
@@ -9,7 +17,7 @@ const formSection = () => {
 		<section className={style.textInputSection}>
 			<div className={style.passwordDisplay}>368dd564A65dv</div>
 			<button>
-				<FaRegCopy style={{color: "rgb(165, 243, 165)", fontSize: "1.3rem"}} />
+				<FaRegCopy className={style.copyIcon} />
 			</button>
 		</section>
 
@@ -40,13 +48,10 @@ const formSection = () => {
 				Include Symbols
 			</label>
 
-
-			<StrenghtIndicator strength={1} />
+			<StrenghtIndicator strength={3} />
 
 			<button>GENERATE →</button>
 		</section>
-
-
 	</form>
   )
 }

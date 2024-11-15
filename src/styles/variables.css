@@ -1,0 +1,14 @@
+:root {
+	--color-primary: #b1b1b1;
+	--color-secondary: #a5f3a5;
+	--color-tertiary: #1e1d1d;
+	--color-quaternary: #3f3d3d;
+	--color-quinary: #ebe5e5;
+
+	--color-strength-0: var(--color-primary);
+	--color-strength-1: #ff0000;
+	--color-strength-2: #feab57;
+	--color-strength-3: #ffff00;
+	--color-strength-4: #7fff00;
+
+}

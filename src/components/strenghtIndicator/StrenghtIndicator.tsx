@@ -23,7 +23,7 @@ const StrenghtIndicator = ({strength}: StrengthIndicatorProps) => {
     <div className={style.strengthIndicatorsContainer}>
       WEAK
       {Array.from({length: 4}).map((_, index)=> {
-        return <div className={style.strengthIndicator} style={index < strength ? returnIndicatorStyles(strength): {}}></div>
+        return <div key={index} className={style.strengthIndicator} style={index < strength ? returnIndicatorStyles(strength): {}}></div>
       })}
    
     </div>    

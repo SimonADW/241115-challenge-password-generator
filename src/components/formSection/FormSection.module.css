@@ -95,6 +95,7 @@ display: flex;
 
 .formContainer input[type="checkbox"]:checked {
 	background: var(--color-secondary);
+	
 }
 
 .formContainer input[type="checkbox"]:hover {

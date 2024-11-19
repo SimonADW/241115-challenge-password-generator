@@ -1,7 +1,8 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import StrenghtIndicator from '../strenghtIndicator/StrenghtIndicator';
 import style from './formSection.module.css';
-import { FaRegCopy } from "react-icons/fa";
+import { generate } from 'generate-password-browser';
+import ClipBoardButton from '../clipBoardButton/ClipBoardButton';
 
 
 const FormSection = () => {
@@ -15,6 +16,7 @@ const FormSection = () => {
 		symbols: true
 	});
 
+
 	const handleChange = (event: ChangeEvent<HTMLInputElement>)=> {
 		const {name, value, checked } = event.target;
 		
@@ -26,7 +28,7 @@ const FormSection = () => {
 		}
 	}
 
-	const validateForm = ()=> {
+	const validateForm = ()=> {
 		// Check if at least one option is checked
 		if(!formValues.lowercase && !formValues.uppercase && !formValues.numbers && !formValues.symbols) {
 			setError("Please check at least one option above")
@@ -35,23 +37,31 @@ const FormSection = () => {
 		return true;
 	}
 
+	const generatePassword = ()=> {
+		const password = generate({
+			length: formValues.charLength,
+			uppercase: formValues.uppercase,
+			lowercase: formValues.lowercase,
+			numbers: formValues.numbers, 
+			symbols: formValues.symbols
+		});
+		setGeneratedPassword(password)
+	}
+
 	const handleGenerate = (event: FormEvent)=> {
 		event.preventDefault()
 		if(validateForm()) {
-			setGeneratedPassword("Passworrddddd")
+			generatePassword()
 		}	
 	}
-	
 
-
+		
   return (
 	<form className={style.formContainer} onSubmit={(e)=>handleGenerate(e)}>
 		<section className={style.textInputSection}>
 			<div className={style.passwordDisplay}>{generatedPassword}
 			</div>
-			<button>
-				<FaRegCopy className={style.copyIcon} />
-			</button>
+			<ClipBoardButton generatedPassword={generatedPassword} />
 		</section>
 
 		<section className={style.formMainSection}>

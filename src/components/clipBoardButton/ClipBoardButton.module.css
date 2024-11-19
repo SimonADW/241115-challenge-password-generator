@@ -1,0 +1,17 @@
+.copyIcon {
+	fill: var(--color-secondary);
+	font-size: 1.3rem;
+	transition: font-size 50ms ease;
+}
+
+.copyIcon:hover {
+	font-size: 1.4rem;
+}
+
+.copiedMessage {
+	color: var(--color-primary);
+	position: absolute;	
+	top: 20px;
+	right: -5px;
+	transform: translateX(100%);
+}

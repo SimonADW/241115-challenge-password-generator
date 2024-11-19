@@ -7,16 +7,6 @@
 	padding: 2rem;
 }
 
-.copyIcon {
-	fill: var(--color-secondary);
-	font-size: 1.3rem;
-	transition: font-size 50ms ease;
-}
-
-.copyIcon:hover {
-	font-size: 1.4rem;
-}
-
 form section {
 	padding: 1.5rem 1rem 1rem;
 	background: var(--color-quaternary);	
@@ -27,6 +17,8 @@ form section {
 	align-items: center;
 	justify-content: space-between;
 	gap: 0.5rem;
+	/* To position absolute the "Copied to clipboard message in ClipBoard Component */
+	position: relative;
 }
 
 .passwordDisplay {	

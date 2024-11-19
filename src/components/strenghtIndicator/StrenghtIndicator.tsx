@@ -6,10 +6,9 @@ type StrengthIndicatorProps = {
 
 /** COMPONENT RENDERS STRENGTH-INDICATION CARD, TAKES IS LEVEL OF STRENGTH 0-4 */
 const StrenghtIndicator = ({ passwordStrength }: StrengthIndicatorProps) => {
-	
-  const strengthValues = ["WEAK", "MEDIUM", "GOOD", "STRONG"]
-	
-  // Function to return respective indicator styles
+	const strengthValues = ["WEAK", "MEDIUM", "GOOD", "STRONG"];
+
+	// Function to return respective indicator styles
 	const returnIndicatorStyles = (strength: number) => {
 		if (strength === 0) {
 			return { borderColor: "var(--color-strength-0)" };
@@ -25,7 +24,7 @@ const StrenghtIndicator = ({ passwordStrength }: StrengthIndicatorProps) => {
 		<div className={style.strengthIndicatorSection}>
 			<p>STRENGTH</p>
 			<div className={style.strengthIndicatorsContainer}>
-        {strengthValues[passwordStrength-1]}
+				{strengthValues[passwordStrength - 1]}
 				{Array.from({ length: 4 }).map((_, index) => {
 					return (
 						<div

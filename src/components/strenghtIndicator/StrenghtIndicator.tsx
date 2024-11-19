@@ -1,5 +1,6 @@
 import style from './StrengthIndicator.module.css';
-import type { Strength } from '../formSection/FormSection';
+
+import { Strength } from '../utils/types';
 
 type StrengthIndicatorProps = {
   strength: Strength;
@@ -26,7 +27,7 @@ const StrenghtIndicator = ({strength}: StrengthIndicatorProps) => {
         return <div key={index} className={style.strengthIndicator} style={index < strength ? returnIndicatorStyles(strength): {}}></div>
       })}
    
-    </div>    
+    </div>
   </div>
   )
 }

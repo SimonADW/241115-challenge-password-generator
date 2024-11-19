@@ -3,16 +3,10 @@ import StrenghtIndicator from '../strenghtIndicator/StrenghtIndicator';
 import style from './formSection.module.css';
 import { FaRegCopy } from "react-icons/fa";
 
-export enum Strength {
-	Default = 0,
-	Weak = 1,
-	Medium = 2,
-	Strong = 3,
-	VeryStrong = 4,
-  }
 
 const FormSection = () => {
 	const [generatedPassword, setGeneratedPassword] = useState("");
+	const [error, setError] = useState("")
 	const [formValues, setFormValues] = useState({
 		charLength: 5,
 		uppercase: true,
@@ -28,12 +22,24 @@ const FormSection = () => {
 			setFormValues((prev)=> ({...prev, [name]: Number(value)}))			
 		} else {
 			setFormValues((prev)=> ({...prev, [name]: checked}))
+			setError("");
 		}
+	}
+
+	const validateForm = ()=> {
+		// Check if at least one option is checked
+		if(!formValues.lowercase && !formValues.uppercase && !formValues.numbers && !formValues.symbols) {
+			setError("Please check at least one option above")
+			return
+		}		
+		return true;
 	}
 
 	const handleGenerate = (event: FormEvent)=> {
 		event.preventDefault()
-		console.log(formValues);		
+		if(validateForm()) {
+			setGeneratedPassword("Passworrddddd")
+		}	
 	}
 	
 
@@ -54,14 +60,14 @@ const FormSection = () => {
 				<div className={style.charLength}>{formValues.charLength}</div>
 			</div>
 
-			<input type="range" name='charLength' id='charLength' min={0} max={20} step={1} value={formValues.length} onChange={(e)=>handleChange(e)}/>
+			<input type="range" name='charLength' id='charLength' min={0} max={20} step={1} value={formValues.charLength} onChange={(e)=>handleChange(e)}/>
 			<label htmlFor="uppercase">
-				<input type="checkbox" name='uppercase' id='uppercase' checked={formValues.upper} onChange={(e)=>handleChange(e)}/>
+				<input type="checkbox" name='uppercase' id='uppercase' checked={formValues.uppercase} onChange={(e)=>handleChange(e)}/>
 				Include Uppercase Letters
 			</label>
 
 			<label htmlFor="lowercase">
-				<input type="checkbox" name='lowercase' id='lowercase' checked={formValues.lower} onChange={(e)=>handleChange(e)}/>
+				<input type="checkbox" name='lowercase' id='lowercase' checked={formValues.lowercase} onChange={(e)=>handleChange(e)}/>
 				Include Lowercase Letters
 			</label>
 
@@ -75,7 +81,9 @@ const FormSection = () => {
 				Include Symbols
 			</label>
 
-			<StrenghtIndicator strength={3} />
+			<p className={style.errorMessage}>{error ?? error}</p>
+
+			<StrenghtIndicator strength={2} />
 
 			<button>GENERATE →</button>
 		</section>

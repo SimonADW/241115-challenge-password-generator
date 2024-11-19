@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import StrenghtIndicator from "../strenghtIndicator/StrenghtIndicator";
-import style from "./formSection.module.css";
+import style from "./FormSection.module.css";
 import { generate } from "generate-password-browser";
 import ClipBoardButton from "../clipBoardButton/ClipBoardButton";
 import { formValuesType } from "../utils/types";

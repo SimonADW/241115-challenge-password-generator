@@ -1,35 +1,47 @@
-import style from './StrengthIndicator.module.css';
-
-import { Strength } from '../utils/types';
+import style from "./StrengthIndicator.module.css";
 
 type StrengthIndicatorProps = {
-  strength: Strength;
+	passwordStrength: number;
 };
 
 /** COMPONENT RENDERS STRENGTH-INDICATION CARD, TAKES IS LEVEL OF STRENGTH 0-4 */
-const StrenghtIndicator = ({strength}: StrengthIndicatorProps) => {
+const StrenghtIndicator = ({ passwordStrength }: StrengthIndicatorProps) => {
+	
+  const strengthValues = ["WEAK", "MEDIUM", "GOOD", "STRONG"]
+	
+  // Function to return respective indicator styles
+	const returnIndicatorStyles = (strength: number) => {
+		if (strength === 0) {
+			return { borderColor: "var(--color-strength-0)" };
+		} else {
+			return {
+				borderColor: `var(--color-strength-${strength})`,
+				backgroundColor: `var(--color-strength-${strength})`,
+			};
+		}
+	};
 
-  // FUNCTION TO RETURN RESPECTIVE INDICATOR STYLES
-  const returnIndicatorStyles = (strength: number) => {
-    if(strength === 0) {
-      return {borderColor: "var(--color-strength-0)"}
-    } else {
-      return {borderColor: `var(--color-strength-${strength})`, backgroundColor: `var(--color-strength-${strength})`}
-    }
-  }
+	return (
+		<div className={style.strengthIndicatorSection}>
+			<p>STRENGTH</p>
+			<div className={style.strengthIndicatorsContainer}>
+        {strengthValues[passwordStrength-1]}
+				{Array.from({ length: 4 }).map((_, index) => {
+					return (
+						<div
+							key={index}
+							className={style.strengthIndicator}
+							style={
+								index < passwordStrength
+									? returnIndicatorStyles(passwordStrength)
+									: {}
+							}
+						></div>
+					);
+				})}
+			</div>
+		</div>
+	);
+};
 
-  return (
-	<div className={style.strengthIndicatorSection}>
-    <p>STRENGTH</p>
-    <div className={style.strengthIndicatorsContainer}>
-      WEAK
-      {Array.from({length: 4}).map((_, index)=> {
-        return <div key={index} className={style.strengthIndicator} style={index < strength ? returnIndicatorStyles(strength): {}}></div>
-      })}
-   
-    </div>
-  </div>
-  )
-}
-
-export default StrenghtIndicator
+export default StrenghtIndicator;
